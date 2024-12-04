@@ -36,6 +36,7 @@
 #include <Standard_WarningsRestore.hxx>
 
 #include <Standard_Version.hxx>
+#include <QDockWidget>
 
 //! Main application window.
 class MyMainWindow : public QMainWindow
@@ -155,6 +156,15 @@ public:
       }
       setCentralWidget (myViewer);
     }
+
+    auto leftDock = new QDockWidget;
+    auto rightDock = new QDockWidget;
+
+    leftDock->setWidget(myViewer);
+    rightDock->setWidget(new QTabWidget);
+
+    addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, leftDock);
+    addDockWidget(Qt::DockWidgetArea::RightDockWidgetArea, rightDock);
   }
 };
 
